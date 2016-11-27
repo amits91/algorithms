@@ -63,6 +63,14 @@ void rotate(vector<int> *Ap, int k)
     }
 }
 
+void print_arr(const vector<int> & A)
+{
+    for (int i = 0; i < A.size(); ++i) {
+        cout << " " << A[i];
+    }
+    cout << endl;
+}
+
 int main(){
     int n;
     int k;
@@ -72,7 +80,9 @@ int main(){
     for(int a_i = 0;a_i < n;a_i++){
        cin >> a[a_i];
     }
+    print_arr(a);
     rotate(&a, k);
+    print_arr(a);
     vector<int> o(q);
     for(int a0 = 0; a0 < q; a0++){
         int m;
