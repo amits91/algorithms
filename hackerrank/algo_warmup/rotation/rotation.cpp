@@ -41,13 +41,14 @@
 #include <unordered_map>
 
 using namespace std;
+//#define DEBUG
 
 void rotate(vector<int> *Ap, int k)
 {
     vector<int> &A = *Ap;
-    if (k == A.size()) {
+    if (k == A.size() || k == 0) {
         return;
-    } else if (k > A.size()) {
+    } else if (k > (int)A.size()) {
         k = k % A.size();
     } else if (k < 0) {
         k = A.size() + k;
@@ -65,10 +66,12 @@ void rotate(vector<int> *Ap, int k)
 
 void print_arr(const vector<int> & A)
 {
+#ifdef DEBUG
     for (int i = 0; i < A.size(); ++i) {
         cout << " " << A[i];
     }
     cout << endl;
+#endif
 }
 
 int main(){
