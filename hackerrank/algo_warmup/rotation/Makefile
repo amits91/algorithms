@@ -1,8 +1,14 @@
+files := $(shell find . -name test*.txt)
 all: run
 
-files := $(shell find . -name test*.txt)
-.PHONY: ${files}
-${files}: ; ./a.out <$@
-compile:
+clean:
+	\rm -rf a.out
+
+compile: clean
 	g++ rotation.cpp -g -std=c++11
+
+${files}: ; ./a.out <$@
+
 run: compile ${files}
+
+.PHONY: ${files}
