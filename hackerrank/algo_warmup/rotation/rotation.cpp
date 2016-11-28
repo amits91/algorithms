@@ -46,20 +46,25 @@ using namespace std;
 void rotate(vector<int> *Ap, int k)
 {
     vector<int> &A = *Ap;
-    if (k == A.size() || k == 0) {
+    int sz = A.size();
+    if (k == sz || k == 0) {
         return;
-    } else if (k > (int)A.size()) {
-        k = k % A.size();
+    } else if (k > (int)sz) {
+        k = k % sz;
     } else if (k < 0) {
-        k = A.size() + k;
+        k = sz + k;
     }
-    int i = A.size() - 1;
+    int i = sz - 1;
     int j = i - k;
     while (i > 0) {
-        if (j > 0) {
+        if (j >= 0) {
             swap(A[i--], A[j--]);
         } else {
-            swap(A[i--], A[0]);
+            if (sz % k != 0) {
+                swap(A[i--], A[0]);
+            } else {
+                break;
+            }
         }
     }
 }
